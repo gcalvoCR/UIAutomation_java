@@ -20,7 +20,7 @@ public class AppTest
     * */
     @BeforeMethod
     public void setUp(){
-        String path = "C:\\Users\\Gabriel\\Documents\\dev\\UIAutomation_java\\src\\test\\resources\\chromedriver.exe";
+        String path = "./src/test/resources/chromedriver.exe";
         System.setProperty("webdriver.chrome.driver", path);
         driver = new ChromeDriver();
     }
