@@ -1,13 +1,13 @@
 node {
 	stage ('SCM checkout'){
 		git "https://github.com/gcalvoCR/UIAutomation_java"
-		}
+	}
 	stage ('Build'){
     	dir("comtest") {
-	   sh "mvn clean install"
-       }
+	   		sh "mvn clean install"
+       	}
        	dir("comtest/target") {
-	   sh "java -jar testing-1.0-SNAPSHOT.jar"
-       }
-		}
+	   		sh "java -jar testing-1.0-SNAPSHOT.jar"
+       	}
+	}
 }
