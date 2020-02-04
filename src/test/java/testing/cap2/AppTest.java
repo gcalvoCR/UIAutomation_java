@@ -18,7 +18,7 @@ public class AppTest
     public void secondTest()
     {
         //Let the system know where to find the chrome driver
-        String path = "C:\\Users\\Gabriel\\Documents\\dev\\UIAutomation_java\\src\\test\\resources\\chromedriver.exe";
+        String path = "./src/test/resources/chromedriver";
         System.setProperty("webdriver.chrome.driver", path);
 
         //we initialize the driver
