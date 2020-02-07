@@ -1,4 +1,4 @@
-package testing.cap3;
+package testing.suite2;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertTrue;
 
-public class AppTest 
+public class Suite2
 {
     private WebDriver driver;
 
@@ -29,16 +29,10 @@ public class AppTest
     }
 
     @Test
-    public void secondTest()
-    {
+    public void secondTest() throws InterruptedException {
         driver.get("https://www.google.com/");
         driver.manage().window().maximize();
-
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-        }
-
+        Thread.sleep(3000);
         assertTrue(true);
     }
 }
