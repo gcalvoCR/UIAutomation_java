@@ -1,13 +1,16 @@
-node {
-	stage ('SCM checkout'){
-		git "https://github.com/gcalvoCR/UIAutomation_java"
-	}
-	stage ('Build'){
-    	dir("comtest") {
+pipeline {
+    agent any
+
+    tools{
+        maven  "M3"
+    }
+    stages{
+        stage ('Build'){
 	   		sh "mvn clean install"
-       	}
-       	dir("comtest/target") {
-	   		sh "java -jar testing-1.0-SNAPSHOT.jar"
-       	}
-	}
+            dir("comtest/target") {
+                sh "java -jar testing-1.0-SNAPSHOT.jar"
+            }
+	    }
+    }
+
 }
