@@ -3,7 +3,7 @@ package testing.suite1;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class Suite1
+public class FirstSuite
 {
     @Test
     public void testAssertTrue() throws InterruptedException {

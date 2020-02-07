@@ -8,14 +8,10 @@ import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertTrue;
 
-public class Suite2
+public class SecondSuite
 {
     private WebDriver driver;
 
-    /*
-    * So let's start abstracting the logic to be reusable
-    *
-    * */
     @BeforeMethod
     public void setUp(){
         String path = "./src/test/resources/chromedriver";
