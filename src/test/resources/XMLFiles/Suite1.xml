@@ -2,7 +2,7 @@
 <suite name="Test Automation project" verbose="1">
 
 <!--    base params -->
-    <parameter name="browser" value="FIREFOX"/>
+    <parameter name="browser" value="CHROME"/>
     <parameter name="uri" value="https://the-internet.herokuapp.com/"/>
     <parameter name="type" value="docker"/>
     <parameter name="node-uri" value="http://zalenium:4444/wd/hub"/>

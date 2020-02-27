@@ -19,7 +19,6 @@ public class GeckoDriver extends DriverManager{
     protected void createDriver() {
 
         try {
-
             FirefoxOptions options = new FirefoxOptions();
             options.setCapability("build", "build number");
             options.addArguments("--no-sandbox");

@@ -3,7 +3,7 @@ This repo is a base for UI automation using java, it is set to use zalenium and 
 
 
 ## Pre-requisites
-- Install docker. 
+- Install docker. [Read more here](https://docs.docker.com/)
 - Have maven and IntelliJ up and running.
 
 
@@ -15,15 +15,38 @@ This repo is a base for UI automation using java, it is set to use zalenium and 
 - Right click on the project and rebuild the solution.
 
 
-## 2. Start docker
+## 2. Start the grid
+
+### In case of Docker
 
 - Open up a new CMD.
 - Navigate to the root of your project (where you clone it)
 - Double check that you have a file named docker-compose.yaml.
 - Type docker-compose up on the Terminal.
-- Make sure the server starts, Go to the browser and navigate to ` http://localhost:4444/grid/admin/live `
-    ** You should see a page that says Zalenium Live Preview **
+- Make sure the grid is up and running, go to the browser and navigate to 
+`http://localhost:4444/grid/admin/live`
+   *You should see a page that says Zalenium Live Preview.*
 
+
+### In case of Selenium-grid
+
+- Open up a new CMD.
+- Navigate to the root of your project (where you clone it)
+- CD in selenium-server
+- type:
+```
+java -jar selenium-server-standalone-3.12.0.jar -role hub -timeout 30 -browserTimeout 60
+```
+*This starts the Hub.*
+- type: 
+```$xslt
+ java -Dwebdriver.chrome.driver=PATH_TO_CHROMEDRIVER -jar selenium-server-standalone-3.12.0.jar -role node -hub http://YOUR_IP_ADDRESS:4444/grid/register/ -port 5566 -browser browserName=chrome,version=latest,maxInstances=10
+```
+*This adds the node (In this case Chrome).*
+
+- Type docker-compose up on the Terminal.
+- Make sure the grid is up and running, go to the browser and navigate to ` http://localhost:4444/grid/admin/live `
+    *You should see a page that says Zalenium Live Preview.*
 
 ## 3. Run the tests
 

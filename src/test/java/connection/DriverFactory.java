@@ -15,6 +15,12 @@ public class DriverFactory {
         DriverManager driverManager;
 
         switch ((String) context.getAttribute("browser")) {
+            case "SAFARI":
+                driverManager = new SafariDriver(context);
+                break;
+            case "IE":
+                driverManager = new IEDriver(context);
+                break;
             case "FIREFOX":
                 driverManager = new GeckoDriver(context);
                 break;
