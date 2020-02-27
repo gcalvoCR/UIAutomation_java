@@ -59,6 +59,7 @@ java -jar selenium-server-standalone-3.12.0.jar -role hub -timeout 30 -browserTi
 - This repo is just a base for your tests, I will keep adding features to the framework until it could be running in Jenkins of Circle CI to allow CI/CD.
 - The tests could be run from the Terminal, Instructions coming soon.
 - This repo doesn't take in count any management tool, in order to make it really useful, you should integrate it to a reporter tool.
+- If you are running it locally, make sure you have the latest version of the BrowserDrivers (and your browsers up to date).
 
 Have any questions? Feel free to reach out to me!
 
