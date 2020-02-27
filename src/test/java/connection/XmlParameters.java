@@ -1,11 +1,13 @@
 package connection;
 
-public interface XmlParamaters {
+public interface XmlParameters {
 
-        String getBaseUrl();
+        String getUri();
         String getBrowser();
         String getUsername();
         String getPassword();
-        
+        String getType(); //Selenium grid or docker
+        String getNodeUri();
+
 }
 

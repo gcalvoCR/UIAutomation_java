@@ -1,4 +1,4 @@
-package testing.suite2;
+package suites;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;

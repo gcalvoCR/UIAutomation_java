@@ -1,32 +1,33 @@
 package connection;
 
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.ITestContext;
 
-public class DriverFactory {
+import java.net.MalformedURLException;
+import java.net.URL;
+
+public class ChromeDriver extends DriverManager{
 
     ITestContext context;
 
-    public DriverFactory(ITestContext context) {
+    ChromeDriver(ITestContext context){
         this.context = context;
     }
 
-    public static DriverManager getManager(ITestContext context) {
+    @Override
+    protected void createDriver() {
 
-        DriverManager driverManager;
-        switch ((String) context.getAttribute("browser")) {
-            case "FIREFOX":
-                driverManager = new FirefoxDriver(context);
-                break;
-            case "IE":
-                driverManager = new IEDriver(context);
-                break;
-            case "SAFARI":
-                driverManager = new SafariDriver(context);
-                break;
-            case "CHROME":
-            default:
-                driverManager = new ChromeDriver(context);
+        try {
+            ChromeOptions options = new ChromeOptions();
+            options.setCapability("build", "build number");
+            options.addArguments("--no-sandbox");
+
+            System.setProperty("webdriver.chrome.driver","Selenium-Server/chromedriver");
+            System.out.println("node-uri"+(String) context.getAttribute(Params.NODE_URI.param));
+            driver = new RemoteWebDriver(new URL((String) context.getAttribute(Params.NODE_URI.param)), options);
+
+        } catch (MalformedURLException ignored) {
         }
-        return driverManager;
     }
 }
