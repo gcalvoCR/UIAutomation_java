@@ -2,7 +2,7 @@
 This repo is a base for UI automation using java, it is set to use zalenium and docker to run.
 
 
-# Prerequisited
+## Pre-requisites
 - Install docker. 
 - Have maven and IntelliJ up and running.
 
