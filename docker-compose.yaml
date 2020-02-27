@@ -1,0 +1,115 @@
+version: '3'
+services:
+  zalenium:
+    image: dosel/zalenium
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /tmp/videos:/home/seluser/videos
+    privileged: true
+    ports:
+      - 4444:4444
+    command: >
+      start --desiredContainers 7
+            --maxDockerSeleniumContainers 14
+            --screenWidth 1366 --screenHeight 768
+            --timeZone America/Denver
+            --videoRecordingEnabled true
+            --sauceLabsEnabled false
+            --browserStackEnabled false
+            --testingBotEnabled false
+            --startTunnel false
+            --sendAnonymousUsageInfo false
+            --maxTestSessions 1000
+    environment:
+      - PULL_SELENIUM_IMAGE=true
+      - WAIT_FOR_AVAILABLE_NODES=false
+      - CHECK_CONTAINERS_INTERVAL=20000
+      - "zalenium_no_proxy=172.16/12, 10.0.0.0/8, *.local, 169.254/16, 192.168.99.*, localhost, 127.0.0.1"
+
+#  set1:
+#    image: fedcheck:1
+#    environment:
+#      - TEST_TO_RUN1=${Test1}
+#      - TEST_TO_RUN2=${Test2}
+#      - TEST_TO_RUN3=${Test3}
+#      - TEST_TO_RUN4=${Test4}
+#      - TEST_TO_RUN5=${Test5}
+#      - TEST_TO_RUN6=${Test6}
+#      - TEST_TO_RUN7=${Test7}
+#      - TEST_TO_RUN8=${Test8}
+#      - TEST_TO_RUN9=${Test9}
+#      - TEST_TO_RUN10=${Test10}
+#    depends_on:
+#      - zalenium
+
+#  set2:
+#    image: fedcheck:1
+#    environment:
+#      - TEST_TO_RUN1=${Test6}
+#      - TEST_TO_RUN2=${Test7}
+#      - TEST_TO_RUN3=${Test8}
+#    depends_on:
+#      - zalenium
+
+#  mavenAdminAuditLog:
+#      image: fedcheck:1
+#      environment:
+#        - TEST_TO_RUN=${TestAdminAudiLogs}
+#      depends_on:
+#        - zalenium
+
+  # mavenCIFAuditLog:
+   #    image: fedcheck:1
+        #     environment:
+          #  - TEST_TO_RUN=${TestCIFAudiLog}
+         #    depends_on:
+    #     - zalenium
+
+    # mavenLEAAuditLog:
+    #    image: fedcheck:1
+        #     environment:
+    #     - TEST_TO_RUN=${TestLEAAuditLog}
+        #    depends_on:
+  #    - zalenium
+
+    # mavenCIFLogin:
+    #    image: fedcheck:1
+    #   environment:
+    #    - TEST_TO_RUN=${TestCIFLogin}
+        #  depends_on:
+    #    - zalenium
+
+    #mavenCIFVisitHistory:
+    #   image: fedcheck:1
+        #   environment:
+        #    - TEST_TO_RUN=${TestCIFVisitHistory}
+        #   depends_on:
+    #     - zalenium
+
+    #mavenCIFRestrictedNotification:
+      # image: fedcheck:1
+      #     environment:
+        #    - TEST_TO_RUN=${TestCIFRestrictedNotification}
+        #   depends_on:
+        #  -zalenium
+
+    #mavenLEAFedCheckScan:
+        #  image: fedcheck:1
+        #   environment:
+    #    - TEST_TO_RUN=${TestLEAFedCheckScan}
+    #  depends_on:
+    #     - zalenium
+
+# In order to run the images we need to type in the terminal 
+
+# sudo nano /etc/hosts
+
+# (it opens the file --> hosts)
+
+# - add the next line
+
+# 127.0.0.1 zalenium
+
+# then Control+X to exit and we say yes to save changes.
+
+# We are all set! GAB

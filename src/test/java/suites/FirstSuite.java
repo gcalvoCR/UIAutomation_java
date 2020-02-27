@@ -1,4 +1,4 @@
-package testing.suite1;
+package suites.suite1;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;

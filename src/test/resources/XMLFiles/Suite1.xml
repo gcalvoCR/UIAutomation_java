@@ -1,0 +1,32 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Ident Solutions" verbose="1">
+
+    <parameter name="baseURL" value="https://qa-admin.fedcheck.io/"/>
+    <parameter name="username" value="jtencio@identsolutions.com"/>
+    <parameter name="password" value="fedcheck"/>
+    <parameter name="project_id" value="1"/>
+    <parameter name="suite_id" value="99"/>
+    <parameter name="nodeURL" value="http://zalenium:4444/wd/hub"/>
+
+    <parameter name="browser" value="CHROME"/>
+    <parameter name="appName" value="ADMIN WEB"/>
+    <parameter name="testType" value="practice"/>
+    <!--    <parameter name="milestone" value="Golden Path"/> -->
+
+    <parameter name="safariRunNum" value=""/>
+    <parameter name="chromeRunNum" value=""/>
+    <parameter name="firefoxRunNum" value=""/>
+
+    <parameter name="whereAmIRunning" value="6"/>
+    <parameter name="browserNumber" value="2"/>
+    <parameter name="videoRecording" value="true"/>
+    <parameter name="nonAdminUsername" value="non-admin@identsolutions.com"/>
+    <parameter name="section" value="ADMIN TOOL"/>
+
+    <test name="Smoke Test">
+        <classes>
+            <class name="admin.tests.AdminAuditLog_Tests">
+            </class>
+        </classes>
+    </test>
+</suite>
