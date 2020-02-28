@@ -1,5 +1,6 @@
 package connection;
 
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.ITestContext;
@@ -19,12 +20,20 @@ public class GeckoDriver extends DriverManager{
     protected void createDriver() {
 
         try {
-            FirefoxOptions options = new FirefoxOptions();
-            options.setCapability("build", "build number");
-            options.addArguments("--no-sandbox");
+            String environment = (String)context.getAttribute(Params.ENVIRONMENT.param);
 
-            System.setProperty("webdriver.gecko.driver","Selenium-Server/geckodriver");
-            driver = new RemoteWebDriver(new URL((String) context.getAttribute(Params.NODE_URI.param)), options);
+            if(environment.equals("local")){
+                System.setProperty("webdriver.gecko.driver","selenium-server/geckodriver");
+                driver = new FirefoxDriver();
+
+            } else if(environment.equals("grid")){
+                FirefoxOptions options = new FirefoxOptions();
+                options.setCapability("build", "build number");
+                options.addArguments("--no-sandbox");
+
+                driver = new RemoteWebDriver(new URL((String) context.getAttribute(Params.NODE_URI.param)), options);
+            }
+
 
         } catch (MalformedURLException ignored) {
         }

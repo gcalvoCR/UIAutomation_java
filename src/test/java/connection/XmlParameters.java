@@ -2,12 +2,13 @@ package connection;
 
 public interface XmlParameters {
 
-        String getUri();
+        String getEnvironment(); //local or grid
+        String getGrid(); //standalone or docker
+        String getNodeUri();
         String getBrowser();
+        String getUri();
         String getUsername();
         String getPassword();
-        String getType(); //Selenium grid or docker
-        String getNodeUri();
 
 }
 

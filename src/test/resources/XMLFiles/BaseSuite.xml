@@ -1,0 +1,25 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="test1" verbose="1" parallel="tests" thread-count="2">
+
+<!--    base params -->
+
+    <!-- local or grid -->
+    <parameter name="environment" value="local"/>
+    <!-- standalone or docker -->
+    <parameter name="grid" value="standalone"/>
+    <parameter name="browser" value="FIREFOX"/>
+    <parameter name="node-uri" value="http://zalenium:4444/wd/hub"/>
+    <parameter name="uri" value="https://the-internet.herokuapp.com/"/>
+
+
+<!--    login credentials -->
+    <parameter name="username" value="tomsmith"/>
+    <parameter name="password" value="SuperSecretPassword!"/>
+
+    <test name="Chrome-Tests">
+        <classes>
+            <class name="suites.BaseTests">
+            </class>
+        </classes>
+    </test>
+</suite>

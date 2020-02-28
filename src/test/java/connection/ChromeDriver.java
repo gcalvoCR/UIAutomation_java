@@ -19,14 +19,21 @@ public class ChromeDriver extends DriverManager{
     protected void createDriver() {
 
         try {
-            ChromeOptions options = new ChromeOptions();
-            options.setCapability("build", "build number");
-            options.addArguments("--no-sandbox");
+            String environment = (String)context.getAttribute(Params.ENVIRONMENT.param);
+            if(environment.equals("local")){
+                System.setProperty("webdriver.chrome.driver","selenium-server/chromedriver");
+                driver = new org.openqa.selenium.chrome.ChromeDriver();
 
-            System.setProperty("webdriver.chrome.driver","Selenium-Server/chromedriver");
-            System.out.println("node-uri"+(String) context.getAttribute(Params.NODE_URI.param));
-            driver = new RemoteWebDriver(new URL((String) context.getAttribute(Params.NODE_URI.param)), options);
+            } else if(environment.equals("grid")){
 
+                ChromeOptions options = new ChromeOptions();
+                options.setCapability("build", "build number");
+                options.addArguments("--no-sandbox");
+
+                System.out.println("node-uri"+(String) context.getAttribute(Params.NODE_URI.param));
+                driver = new RemoteWebDriver(new URL((String) context.getAttribute(Params.NODE_URI.param)), options);
+
+            }
         } catch (MalformedURLException ignored) {
         }
     }

@@ -2,10 +2,11 @@ package connection;
 
 public enum Params {
 
+    ENVIRONMENT("environment"),
+    GRID("grid"),
+    NODE_URI("node-uri"),
     BROWSER("browser"),
     URI("uri"),
-    TYPE("type"),
-    NODE_URI("node-uri"),
     USERNAME("username"),
     PASSWORD("password");
 

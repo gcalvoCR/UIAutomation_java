@@ -16,13 +16,26 @@ public class Parameters implements XmlParameters{
     }
 
     @Override
-    public String getUri() {
-        return parameters.get(Params.URI.param);
+    public String getEnvironment() {
+        return parameters.get(Params.ENVIRONMENT.param);
     }
+
+    @Override
+    public String getGrid() {
+        return parameters.get(Params.GRID.param);
+    }
+
+    @Override
+    public String getNodeUri() { return parameters.get(Params.NODE_URI.param); }
 
     @Override
     public String getBrowser() {
         return parameters.get(Params.BROWSER.param);
+    }
+
+    @Override
+    public String getUri() {
+        return parameters.get(Params.URI.param);
     }
 
     @Override
@@ -35,13 +48,4 @@ public class Parameters implements XmlParameters{
         return parameters.get(Params.PASSWORD.param);
     }
 
-    @Override
-    public String getType() {
-        return parameters.get(Params.TYPE.param);
-    }
-
-    @Override
-    public String getNodeUri() {
-        return parameters.get(Params.NODE_URI.param);
-    }
 }

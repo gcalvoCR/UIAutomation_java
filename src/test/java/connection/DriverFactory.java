@@ -4,17 +4,11 @@ import org.testng.ITestContext;
 
 public class DriverFactory {
 
-    ITestContext context;
-
-    public DriverFactory(ITestContext context) {
-        this.context = context;
-    }
-
     public static DriverManager getManager(ITestContext context) {
 
         DriverManager driverManager;
 
-        switch ((String) context.getAttribute("browser")) {
+        switch ((String) context.getAttribute(Params.BROWSER.param)) {
             case "SAFARI":
                 driverManager = new SafariDriver(context);
                 break;
