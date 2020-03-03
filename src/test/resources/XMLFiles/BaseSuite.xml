@@ -4,7 +4,7 @@
 <!--    base params -->
 
     <!-- local or grid -->
-    <parameter name="environment" value="local"/>
+    <parameter name="environment" value="grid"/>
     <!-- standalone or docker -->
     <parameter name="grid" value="standalone"/>
     <parameter name="browser" value="FIREFOX"/>
