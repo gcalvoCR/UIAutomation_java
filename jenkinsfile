@@ -1,16 +1,39 @@
 pipeline {
+
     agent any
 
     tools{
-        maven  "M3"
-    }
-    stages{
-        stage ('Build'){
-	   		sh "mvn clean install"
-            dir("comtest/target") {
-                sh "java -jar testing-1.0-SNAPSHOT.jar"
-            }
-	    }
+        maven  "Maven 3.6.0"
     }
 
+    stages {
+
+        //stage('Set up docker grid') {
+        //    steps {
+        //        sh "docker run --rm -ti --name zalenium -p 4444:4444 -e PULL_SELENIUM_IMAGE=true -v /var/run/docker.sock:/var/run/docker.sock -v /tmp/videos:/home/seluser/videos --privileged dosel/zalenium startjava -jar selenium-server-standalone-3.12.0.jar -role hub -timeout 30 -browserTimeout 60"
+        //        echo "Grid is up"
+        //    }
+        //}
+        
+        stage('Pull Repo') {
+            steps{
+                git branch: 'master',
+                //credentialsId: 'f9c6f404-1249-4d72-8548-fb7a36c849c3',
+                url: 'https://github.com/gcalvoCR/UIAutomation-java.git'
+            }
+        }
+        
+        stage('Run Suite Group-1') {
+            steps {
+                sh 'mvn clean test -DsuiteXmlFile=BaseSuite.xml'
+            }
+        }
+        
+        //post {
+        //always {
+        //    sh "docker-compose down -v"
+        //    echo 'Automation completed!'
+        //}
+    }
 }
+    

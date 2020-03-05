@@ -49,8 +49,17 @@
           <version>2.22.2</version>
           <configuration>
             <suiteXmlFiles>
-              <suiteXmlFile>src/test/resources/XMLFiles/BaseSuite.xml</suiteXmlFile>
+              <!--suppress UnresolvedMavenProperty -->
+              <suiteXmlFile>src/test/resources/XMLFiles/${suiteXmlFile}</suiteXmlFile>
+<!--              <suiteXmlFile>src/test/resources/XMLFiles/BaseSuite.xml</suiteXmlFile>-->
             </suiteXmlFiles>
+            <properties>
+              <property>
+                <name>suitethreadpoolsize</name>
+                <value>7</value>
+              </property>
+            </properties>
+            <testFailureIgnore>true</testFailureIgnore>
           </configuration>
         </plugin>
 
