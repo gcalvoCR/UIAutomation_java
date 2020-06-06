@@ -21,7 +21,7 @@ public class ChromeDriver extends DriverManager{
         try {
             String environment = (String)context.getAttribute(Params.ENVIRONMENT.param);
             if(environment.equals("local")){
-                System.setProperty("webdriver.chrome.driver","selenium-server/chromedriver");
+                System.setProperty("webdriver.chrome.driver","selenium-server/chromedriver.exe");
                 driver = new org.openqa.selenium.chrome.ChromeDriver();
 
             } else if(environment.equals("grid")){

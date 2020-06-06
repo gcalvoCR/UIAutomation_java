@@ -42,7 +42,7 @@ java -jar selenium-server-standalone-3.12.0.jar -role hub -timeout 30 -browserTi
 *This starts the Hub.*
 - type: 
 ```$xslt
- java -Dwebdriver.chrome.driver=PATH_TO_CHROMEDRIVER -jar selenium-server-standalone-3.12.0.jar -role node -hub http://YOUR_IP_ADDRESS:4444/grid/register/ -port 5566 -browser browserName=chrome,version=latest,maxInstances=10
+ java -Dwebdriver.chrome.driver="{COMPLETE_PATH_TO_CHROMEDRIVER}\chromedriver.exe" -jar selenium-server-standalone-3.12.0.jar -role node -hub http://{YOUR_IP_ADDRESS}:4444/grid/register/ -port 5566 -browser browserName=chrome,version=latest,maxInstances=10
 ```
 *This adds the node (In this case Chrome).*
 

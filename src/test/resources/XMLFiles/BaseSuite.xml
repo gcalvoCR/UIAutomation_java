@@ -7,8 +7,8 @@
     <parameter name="environment" value="grid"/>
     <!-- standalone or docker -->
     <parameter name="grid" value="standalone"/>
-    <parameter name="browser" value="FIREFOX"/>
-    <parameter name="node-uri" value="http://zalenium:4444/wd/hub"/>
+    <parameter name="browser" value="CHROME"/>
+    <parameter name="node-uri" value="http://localhost:4444/wd/hub"/>
     <parameter name="uri" value="https://the-internet.herokuapp.com/"/>
 
 
