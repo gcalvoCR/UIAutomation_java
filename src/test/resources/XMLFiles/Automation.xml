@@ -1,0 +1,37 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="automation" verbose="1" parallel="tests" thread-count="1">
+
+    <!--    base params -->
+
+    <!-- local or grid -->
+    <parameter name="environment" value="grid"/>
+    <!-- standalone or docker -->
+    <parameter name="grid" value="standalone"/>
+    <parameter name="browser" value="CHROME"/>
+    <parameter name="node-uri" value="http://localhost:4444/wd/hub"/>
+    <parameter name="uri" value="https://shop.lineuprewards.com/"/>
+
+
+    <!--    login credentials -->
+    <parameter name="username" value="gabriel"/>
+    <parameter name="password" value="SuperSecretPassword!"/>
+
+    <test name="Unit-Tests">
+        <classes>
+            <class name="test.UnitTests">
+            </class>
+        </classes>
+    </test>
+    <test name="Integration-Tests">
+        <classes>
+            <class name="test.IntegrationTests">
+            </class>
+        </classes>
+    </test>
+    <test name="Functional-Tests">
+        <classes>
+            <class name="test.FunctionalTest">
+            </class>
+        </classes>
+    </test>
+</suite>
