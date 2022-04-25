@@ -1,6 +1,7 @@
 package pages;
 
 import base.Params;
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -26,15 +27,18 @@ public class LoginPage extends BasePage{
         btnSubmit.click();
     }
 
+    @Step("Navegar a pagina login")
     public void goToLogin(){
         driver.get(url+"account/login?return_url=%2Faccount");
     }
+
 
     public boolean hasRequiredAttribute(WebElement ele){
         return  ele.getAttribute("required").equals("true");
 
     }
 
+    @Step("Verificar el correo es requerido")
     public boolean checkEmailFieldRequired(){
         return hasRequiredAttribute(inputEmail);
     }

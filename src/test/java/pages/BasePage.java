@@ -1,12 +1,12 @@
 package pages;
 
 import base.Params;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.FindBys;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.ITestContext;
 import util.Helper;
@@ -46,6 +46,7 @@ public class BasePage {
         PageFactory.initElements(driver, this);
     }
 
+    @Step("Verificar la lista de sugerencias")
     public boolean suggestionItemsContain(String text){
         if(suggestionItems.size() == 0){
             return false;
@@ -56,35 +57,42 @@ public class BasePage {
         return true;
     }
 
+    @Step("Verificar si el item fue desplegado en carrito")
     public boolean isCartItemDisplayed(){
         return cartItem.isDisplayed();
     }
 
+    @Step("Verificar si el logo fue desplegado")
     public boolean isLogoDisplayed(){
         return logo.isDisplayed();
     }
 
+    @Step("Hacer click en logo")
     public void clickLogo(){
         logo.click();
         helper.waitForPageToLoad();
     }
 
+    @Step("Buscar {0}")
     public void search(String text){
         clickSearch();
         inputSearch.sendKeys(text);
         helper.waitForPageToLoad();
     }
 
+    @Step("Hacer click en buscar")
     public void clickSearch(){
         iconSearch.click();
         helper.waitForPageToLoad();
     }
 
+    @Step("Abrir carrito de compras")
     public void openShoppingCart(){
         helper.waitUntilClickable(iconShoppingCart);
         iconShoppingCart.click();
     }
 
+    @Step("Obtener total")
     public int getTotalAmount(){
         String txt = total.getText();
         txt = txt.replaceAll("₡ ", "");
@@ -92,6 +100,7 @@ public class BasePage {
         return Integer.parseInt(txt);
     }
 
+    @Step("Obtener precio de producto")
     public int getProductPrice(){
         String txt = unitPriceProduct.getText();
         txt = txt.replaceAll("₡ ", "");
@@ -99,11 +108,13 @@ public class BasePage {
         return Integer.parseInt(txt);
     }
 
+    @Step("Obtener cantidad de producto")
     public int getQuantity(){
         String txt = quantityProduct.getAttribute("value");
         return Integer.parseInt(txt);
     }
 
+    @Step("Obtener cantidad para 'Free delivery'")
     public int getAmountFreeDelivery(){
         try{ Thread.sleep(1000); } catch(Exception e){}
         String txt = amountFreeDelivery.getText();
@@ -112,10 +123,12 @@ public class BasePage {
         return Integer.parseInt(txt);
     }
 
+    @Step("Hacer click en comprar")
     public void comprar(){
         btnComprar.click();
     }
 
+    @Step("Abrir bot y escribir {0}")
     public void openBotAndWrite(String text){
         helper.waitForPageToLoad();
         driver.switchTo().frame("Botmaker");
@@ -124,20 +137,24 @@ public class BasePage {
         inputBot.sendKeys(Keys.RETURN);
     }
 
+    @Step("Escribir en bot {0}")
     public boolean isMessageinBot(String text){
         return driver.findElement(By.xpath("//span[@class='Linkify']//div[text()='"+text+"']")).isDisplayed();
     }
 
+    @Step("Verificar si bot esta desplegado")
     public boolean isBotOpened(){
         helper.waitUntilClickable(bot);
         return bot.isDisplayed();
     }
 
+    @Step("Navegar a 'Mis Puntos'")
     public void goToMisPuntos(){
         linkMisPuntos.click();
         helper.waitForPageToLoad();
     }
 
+    @Step("Navegar a {0}")
     public void goTo(String endpoint){
         driver.get(url+endpoint);
     }

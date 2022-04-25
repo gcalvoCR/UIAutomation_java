@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -17,6 +18,7 @@ public class ProductPage extends BasePage{
         PageFactory.initElements(driver, this);
     }
 
+    @Step("Anadir 2 productos a carrito de compras")
     public void get2ProductsAddedToShoppingCart(){
         goToSpecificProductPage();
         increaseAmount();

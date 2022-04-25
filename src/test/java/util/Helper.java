@@ -17,25 +17,24 @@ public class Helper {
 
     public Helper(WebDriver driver){
         this.driver = driver;
-        this.wait = new FluentWait<>(driver).withTimeout(Duration.ofSeconds(5)).pollingEvery(Duration.ofMillis(500))
+        this.wait = new FluentWait<>(driver).withTimeout(Duration.ofSeconds(2)).pollingEvery(Duration.ofMillis(500))
                 .ignoring(NoSuchElementException.class);
     }
     public void waitForPageToLoad() {
         try{
             long millis = 1000;
-            Thread.sleep(millis);
+            Thread.sleep(1000);
             do {
                 Thread.sleep(millis);
-                millis = millis + 1000;
-            } while (!(((JavascriptExecutor) driver).executeScript("return document.readyState").toString()
-                    .equals("complete")) || millis <= 4000);
-        } catch(InterruptedException e) {}
+                millis = millis + 500;
+            } while (!(((JavascriptExecutor) driver).executeScript("return document.readyState").toString().equals("complete")) || millis <= 2000);
+        } catch(InterruptedException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     public void waitUntilClickable(WebElement ele){
         wait.until(ExpectedConditions.elementToBeClickable(ele));
     }
-
-
 
 }

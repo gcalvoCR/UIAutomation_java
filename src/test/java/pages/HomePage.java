@@ -1,6 +1,6 @@
 package pages;
 
-import org.openqa.selenium.WebDriver;
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -18,6 +18,7 @@ public class HomePage extends BasePage{
         PageFactory.initElements(driver, this);
     }
 
+    @Step("Verificar si el banner fue desplegado")
     public boolean isBannerDisplayed(){
         return banner.isDisplayed();
     }

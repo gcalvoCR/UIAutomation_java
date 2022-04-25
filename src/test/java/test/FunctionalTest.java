@@ -5,8 +5,6 @@ import base.Params;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.BasePage;
-import pages.ComprasPage;
-import pages.HomePage;
 import pages.ProductPage;
 
 public class FunctionalTest extends BaseClass {

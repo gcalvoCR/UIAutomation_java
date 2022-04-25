@@ -16,22 +16,25 @@
     <parameter name="username" value="gabriel"/>
     <parameter name="password" value="SuperSecretPassword!"/>
 
+    <listeners>
+        <listener class-name="base.ListenerTest"/>
+    </listeners>
     <test name="Unit-Tests">
         <classes>
             <class name="test.UnitTests">
             </class>
         </classes>
     </test>
-    <test name="Integration-Tests">
-        <classes>
-            <class name="test.IntegrationTests">
-            </class>
-        </classes>
-    </test>
-    <test name="Functional-Tests">
-        <classes>
-            <class name="test.FunctionalTest">
-            </class>
-        </classes>
-    </test>
+<!--    <test name="Integration-Tests">-->
+<!--        <classes>-->
+<!--            <class name="test.IntegrationTests">-->
+<!--            </class>-->
+<!--        </classes>-->
+<!--    </test>-->
+<!--    <test name="Functional-Tests">-->
+<!--        <classes>-->
+<!--            <class name="test.FunctionalTest">-->
+<!--            </class>-->
+<!--        </classes>-->
+<!--    </test>-->
 </suite>
