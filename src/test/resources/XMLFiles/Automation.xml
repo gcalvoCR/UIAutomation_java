@@ -1,5 +1,5 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite name="automation" verbose="1" parallel="tests" thread-count="1">
+<suite name="Automation" verbose="1" parallel="tests" thread-count="1">
 
     <!--    base params -->
 
@@ -25,16 +25,28 @@
             </class>
         </classes>
     </test>
-<!--    <test name="Integration-Tests">-->
-<!--        <classes>-->
-<!--            <class name="test.IntegrationTests">-->
-<!--            </class>-->
-<!--        </classes>-->
-<!--    </test>-->
-<!--    <test name="Functional-Tests">-->
-<!--        <classes>-->
-<!--            <class name="test.FunctionalTest">-->
-<!--            </class>-->
-<!--        </classes>-->
-<!--    </test>-->
+    <test name="Integration-Tests">
+        <classes>
+            <class name="test.IntegrationTests">
+            </class>
+        </classes>
+    </test>
+    <test name="Functional-Tests">
+        <classes>
+            <class name="test.FunctionalTest">
+            </class>
+        </classes>
+    </test>
+    <test name="Regression-Tests">
+        <classes>
+            <class name="test.RegressionTests">
+            </class>
+        </classes>
+    </test>
+    <test name="Smoke-Tests">
+        <classes>
+            <class name="test.SmokeTests">
+            </class>
+        </classes>
+    </test>
 </suite>

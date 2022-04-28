@@ -1,5 +1,6 @@
 package util;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -35,6 +36,17 @@ public class Helper {
 
     public void waitUntilClickable(WebElement ele){
         wait.until(ExpectedConditions.elementToBeClickable(ele));
+    }
+
+    public static int convertirANumero(String txt){
+        try{
+            txt = txt.replaceAll("₡ ", "");
+            txt = txt.replace(".", "");
+            txt = txt.replace(",", "");
+            return Integer.parseInt(txt);
+        } catch (Exception e){
+            return -1;
+        }
     }
 
 }

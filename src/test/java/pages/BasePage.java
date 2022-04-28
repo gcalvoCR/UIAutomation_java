@@ -6,11 +6,13 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.ITestContext;
 import util.Helper;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BasePage {
@@ -36,6 +38,10 @@ public class BasePage {
     @FindBy(css = ".CartItem") WebElement cartItem;
     @FindBy(css = "input[type='search']") WebElement inputSearch;
     @FindBy(css = ".boost-pfs-search-suggestion-item") List<WebElement> suggestionItems;
+    @FindAll({@FindBy(css = ".boost-pfs-search-suggestion-item")}) List<WebElement> subMenus;
+    @FindBy(css = ".Footer__Inner [aria-label='Facebook']") WebElement iconFacebook;
+    @FindBy(css = ".Footer__Inner [aria-label='Instagram']") WebElement iconInstagram;
+
 
 
     public BasePage(ITestContext context) {
@@ -44,6 +50,16 @@ public class BasePage {
         this.url = (String) context.getAttribute(Params.URI.param);
         this.helper = new Helper(this.driver);
         PageFactory.initElements(driver, this);
+    }
+
+    @Step("Verificar link a Facebook")
+    public boolean isFacebookIconDisplayed(){
+        return iconFacebook.isDisplayed();
+    }
+
+    @Step("Verificar link a Instagram")
+    public boolean isInstagramIconDisplayed(){
+        return iconInstagram.isDisplayed();
     }
 
     @Step("Verificar la lista de sugerencias")
@@ -157,6 +173,13 @@ public class BasePage {
     @Step("Navegar a {0}")
     public void goTo(String endpoint){
         driver.get(url+endpoint);
+    }
+
+    @Step("List submenus")
+    public List<String> listSubmenus(){
+        List<String> opciones = new ArrayList<>();
+        for(WebElement ele: subMenus) opciones.add(ele.getText());
+        return opciones;
     }
 
 }
