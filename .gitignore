@@ -15,3 +15,7 @@
 log/
 target/
 
+
+allure-results/
+results.html
+test_results.html
