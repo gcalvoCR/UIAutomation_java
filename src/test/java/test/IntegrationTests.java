@@ -7,6 +7,7 @@ import pages.BasePage;
 import pages.ComprasPage;
 import pages.ProductPage;
 
+@Listeners(base.ListenerTest.class)
 public class IntegrationTests extends BaseClass {
 
     BasePage base;
@@ -18,7 +19,7 @@ public class IntegrationTests extends BaseClass {
         product = new ProductPage(context);
         compras = new ComprasPage(context);
 
-        product.get2ProductsAddedToShoppingCart();
+        product.getProductsAddedToShoppingCart(2);
         int total = product.getTotalAmount();
         product.comprar();
         Assert.assertTrue(compras.isResumenCompraDisplayed());
@@ -39,7 +40,8 @@ public class IntegrationTests extends BaseClass {
         base = new BasePage(context);
 
         base.goToMisPuntos();
-        Assert.assertEquals(driver.getCurrentUrl(), "https://cr.lineuprewards.com/check-balance/","El usuario no fue dirigido al sistema Mis Puntos");
+        Assert.assertEquals(driver.getCurrentUrl(), "https://cr.lineuprewards.com/check-balance/","El " +
+                "usuario no fue dirigido al sistema Mis Puntos");
     }
 
 }

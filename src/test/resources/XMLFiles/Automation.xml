@@ -1,5 +1,5 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite name="Automation" verbose="1" parallel="tests" thread-count="1">
+<suite name="Automation" verbose="1" parallel="tests" thread-count="5">
 
     <!--    base params -->
 
@@ -16,9 +16,6 @@
     <parameter name="username" value="gabriel"/>
     <parameter name="password" value="SuperSecretPassword!"/>
 
-    <listeners>
-        <listener class-name="base.ListenerTest"/>
-    </listeners>
     <test name="Unit-Tests">
         <classes>
             <class name="test.UnitTests">

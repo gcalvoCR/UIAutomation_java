@@ -12,17 +12,20 @@ public class ProductPage extends BasePage{
     // Selectors
     @FindBy(css = "span[data-action='increase-quantity']") WebElement btnIncreaseAmount;
     @FindBy(css = ".Product__Info button[type='submit']") WebElement btnAddToCard;
+    @FindBy(css= "[data-action='remove-item']") WebElement btnDelete;
 
     public ProductPage(ITestContext context) {
         super(context);
         PageFactory.initElements(driver, this);
     }
 
-    @Step("Anadir 2 productos a carrito de compras")
-    public void get2ProductsAddedToShoppingCart(){
+    @Step("Anadir '{0}' productos a carrito de compras")
+    public void getProductsAddedToShoppingCart(int cantidad){
         goToSpecificProductPage();
-        increaseAmount();
-        addProductToCart();
+        for(int i = 1; i < cantidad; i++){
+            increaseAmount();
+            addProductToCart();
+        }
     }
 
     public void increaseAmount(){
@@ -32,6 +35,11 @@ public class ProductPage extends BasePage{
 
     public void addProductToCart(){
         btnAddToCard.click();
+        helper.waitForPageToLoad();
+    }
+
+    public void deleteProductFromCart(){
+        btnDelete.click();
         helper.waitForPageToLoad();
     }
 

@@ -43,4 +43,9 @@ public class LoginPage extends BasePage{
         return hasRequiredAttribute(inputEmail);
     }
 
+    @Step("Verificar contrasena es requerida")
+    public boolean checkPasswordFieldRequired(){
+        return hasRequiredAttribute(inputPassword);
+    }
+
 }

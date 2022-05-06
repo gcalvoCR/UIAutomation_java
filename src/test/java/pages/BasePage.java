@@ -41,6 +41,11 @@ public class BasePage {
     @FindAll({@FindBy(css = ".boost-pfs-search-suggestion-item")}) List<WebElement> subMenus;
     @FindBy(css = ".Footer__Inner [aria-label='Facebook']") WebElement iconFacebook;
     @FindBy(css = ".Footer__Inner [aria-label='Instagram']") WebElement iconInstagram;
+    @FindAll({@FindBy(css = ".CartItem")}) List<WebElement> cartItems;
+    @FindBy(css = "a.hidden-phone") WebElement iconoLogin;
+    @FindBy(xpath = "//a[text()='Ubicaciones']") WebElement linkUbicaciones;
+    @FindBy(css =".EmptyState__Title") WebElement titulo404;
+    @FindBy(css =".EmptyState__Action.Button") WebElement btnVolverInicio;
 
 
 
@@ -50,6 +55,34 @@ public class BasePage {
         this.url = (String) context.getAttribute(Params.URI.param);
         this.helper = new Helper(this.driver);
         PageFactory.initElements(driver, this);
+    }
+
+    @Step("Verificar titulo 404 se muestra")
+    public boolean is404TitleDisplayed(){
+        return titulo404.isDisplayed();
+    }
+
+    @Step("Verificar boton 'Volver a inicio' se muestra")
+    public boolean isBtnInicioDisplayed(){
+        return btnVolverInicio.isDisplayed();
+    }
+
+    @Step("Hacer click en boton 'Volver a inicio'")
+    public void clickBtnVolverInicio(){
+        btnVolverInicio.click();
+        helper.waitForPageToLoad();
+    }
+
+    @Step("Hacer click en link 'Ubicaciones'")
+    public void clickLinkUbicaciones(){
+        linkUbicaciones.click();
+        helper.waitForPageToLoad();
+    }
+
+    @Step("Hacer click en icono Login")
+    public void clickLoginIcon(){
+        iconoLogin.click();
+        helper.waitForPageToLoad();
     }
 
     @Step("Verificar link a Facebook")
@@ -92,8 +125,8 @@ public class BasePage {
     @Step("Buscar {0}")
     public void search(String text){
         clickSearch();
-        inputSearch.sendKeys(text);
-        helper.waitForPageToLoad();
+        helper.sendKeysWithDelay(inputSearch,text);
+        inputSearch.click();
     }
 
     @Step("Hacer click en buscar")
@@ -180,6 +213,16 @@ public class BasePage {
         List<String> opciones = new ArrayList<>();
         for(WebElement ele: subMenus) opciones.add(ele.getText());
         return opciones;
+    }
+
+    @Step("Obtener cantidad de articulos en carrito")
+    public int getCartItems(){
+        return cartItems.size();
+    }
+
+    @Step("Verificar link '{0}'")
+    public boolean isLinkDisplayed(String link){
+        return driver.findElement(By.xpath("//div[@class='Footer__Inner']//a[text()='"+link+"']")).isDisplayed();
     }
 
 }
